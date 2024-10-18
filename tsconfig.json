@@ -6,7 +6,9 @@
       "esnext"
     ],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": [
+        "./src/*"
+      ]
     },
     "allowJs": true,
     "skipLibCheck": true,
@@ -14,21 +16,21 @@
     "noEmit": true,
     "incremental": true,
     "esModuleInterop": true,
-    "module": "esnext",
+    "module": "esnext", // Change to "commonjs" if you experience module resolution issues
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
+    "forceConsistentCasingInFileNames": true,
     "plugins": [
       {
         "name": "next"
       }
-    ],
-    "forceConsistentCasingInFileNames": true
+    ]
   },
   "include": [
     "next-env.d.ts",
-    ".next/types/**/*.ts",
+    ".next/types/**/*.ts", // Change to "node_modules/next/types/**/*.ts" if needed
     "**/*.ts",
     "**/*.tsx"
   ],
