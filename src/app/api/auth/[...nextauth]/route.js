@@ -1,7 +1,7 @@
 // /app/api/auth/[...nextauth]/route.js
 
 import clientPromise from "@/libs/mongoConnect";
-import { UserInfo } from "@/models/UserInfo";
+import { UserInfo } from "@/models/UserInfo"; // Adjust or remove if unused
 import bcrypt from "bcrypt";
 import mongoose from "mongoose";
 import { User } from "@/models/User";
@@ -11,7 +11,7 @@ import GoogleProvider from "next-auth/providers/google";
 import { MongoDBAdapter } from "@auth/mongodb-adapter";
 
 // Define the authOptions used for authentication
-export const authOptions = {
+const authOptions = {
   secret: process.env.SECRET,
   adapter: MongoDBAdapter(clientPromise),
   providers: [
@@ -21,12 +21,11 @@ export const authOptions = {
     }),
     CredentialsProvider({
       name: "Credentials",
-      id: "credentials",
       credentials: {
         username: { label: "Email", type: "email", placeholder: "test@example.com" },
         password: { label: "Password", type: "password" },
       },
-      async authorize(credentials, req) {
+      async authorize(credentials) {
         const email = credentials?.username;
         const password = credentials?.password;
 
@@ -40,7 +39,7 @@ export const authOptions = {
         }
 
         return null;
-      }
+      },
     }),
   ],
 };
@@ -48,5 +47,5 @@ export const authOptions = {
 // Initialize NextAuth handler
 const handler = NextAuth(authOptions);
 
-// Exporting the GET and POST methods to handle requests
+// Export the handler for GET and POST requests
 export { handler as GET, handler as POST };
