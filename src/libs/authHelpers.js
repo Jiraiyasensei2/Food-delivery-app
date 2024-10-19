@@ -2,7 +2,8 @@
 
 import { getServerSession } from "next-auth/next";
 import { UserInfo } from "@/models/UserInfo";
-import { authOptions } from "@/app/libs/authOptions";
+import { authOptions } from '@/libs/authOptions';
+
 
 // Function to check if the user is an admin
 export async function isAdmin() {

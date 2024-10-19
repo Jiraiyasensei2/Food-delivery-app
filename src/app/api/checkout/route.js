@@ -1,4 +1,4 @@
-import { authOptions } from "@/app/libs/authOptions";
+import { authOptions } from '@/libs/authOptions';
 import {MenuItem} from "@/models/MenuItem";
 import {Order} from "@/models/Order";
 import mongoose from "mongoose";
